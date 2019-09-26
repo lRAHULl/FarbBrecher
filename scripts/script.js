@@ -1,21 +1,22 @@
 let canvas=document.getElementById("canvas");
 function startTimer() {
-    let noOfMinutes = 1;
+    let noOfMinutes = 0.1;
     let duration = noOfMinutes * 60;
     let display = document.getElementById("timer");
     let timer = duration, minutes, seconds;
+    let gameOver = document.getElementById("game-over");
     let time=setInterval(function () {
-        console.log(timer);
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.innerText = minutes + ":" + seconds;
+        display.innerText = minutes + " : " + seconds;
 
         if (--timer === -1) {
             canvas.style.display="none";
+            gameOver.style.display = "block";
             clearInterval(time);
         }
     }, 1000);
