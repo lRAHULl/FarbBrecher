@@ -6,6 +6,9 @@ body {
     background-color: #383838;
     position: relative;
 }
+#timer{
+    color: lightgray;
+}
 
 #canvas {
     position: absolute;
