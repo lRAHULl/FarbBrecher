@@ -64,15 +64,6 @@ body {
     /* background-color: aliceblue; */
 }
 
-.ball {
-    border-radius: 50%;
-    box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1);
-    margin: 0  .6%;
-    height: 60px;
-    width: 60px;
-    display: inline-block;
-}
-
 #currentScore {
     background-color: antiquewhite;
 }
@@ -116,7 +107,14 @@ body {
     content: '';
   }
   
-
+  .ball {
+    border-radius: 50%;
+    box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1);
+    margin: 0 .6%;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+}
 
 .ball:hover {
     transform: scale(1.05);
