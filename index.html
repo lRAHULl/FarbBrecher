@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/shower.css">
     <title>Farb Brecher</title>
-</head>
-<body>
+  </head>
+  <body>
+    <i class="top-icons fas fa-play fa-2x" id="play" onclick="startTimer()"></i>
+    <i class="top-icons fas fa-pause fa-2x" id="pause"></i>
+    <i class="top-icons fas fa-undo-alt fa-2x" id="replay"></i>
     <h1 id="timer"></h1>
     <div id="canvas"></div>
+    <center id="game-over">
+      <h1>Game Over</h1>
+      <h2 id="final-score">Score: </h2>
+    </center>
     <script src="scripts/script.js"></script>
-</body>
+  </body>
 </html>
