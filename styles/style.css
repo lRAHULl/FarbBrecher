@@ -5,8 +5,33 @@
 
 body {
     background-color: #383838;
-    position: relative;
+    /* position: relative; */
 }
+
+/* #action {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 50px;
+} */
+
+.top-icons {
+    position: absolute;
+    top: 5%;
+}
+
+#play {
+    left: 5%;
+}
+
+#pause {
+    left: 10%;
+}
+
+#replay {
+    left: 15%;
+}
+
 #timer{
     position: absolute;
     right: 10%;
@@ -92,4 +117,4 @@ green #7AEA66 */
     top: 50%;
     left: 55%;
     transform: translate(-50%, -50%); */
-}
+/* } */
