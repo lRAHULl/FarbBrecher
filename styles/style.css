@@ -1,0 +1,29 @@
+* {
+    font-family: 'Indie Flower', cursive;
+}
+
+body {
+    background-color: #383838;
+    position: relative;
+}
+
+#canvas {
+    position: absolute;
+    height: 480px;
+    width: 460px;
+    padding: 10px;
+    margin-top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: aliceblue; */
+}
+
+.ball {
+    background-color: aqua;
+    border-radius: 50%;
+    box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1);
+    margin: 0;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+}
