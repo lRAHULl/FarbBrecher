@@ -22,11 +22,51 @@ body {
 }
 
 .ball {
-    background-color: aqua;
+    /* background-color: aqua; */
     border-radius: 50%;
     box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1);
-    margin: 0;
+    margin: 0  .6%;
     height: 60px;
     width: 60px;
     display: inline-block;
+}
+
+.red-ball {
+    background-color: #FA6C60;
+}
+
+.blue-ball {
+    background-color: #4E85E7;
+}
+
+.green-ball {
+    background-color: #7AEA66;
+}
+
+.yellow-ball {
+    background-color: #F9E602;
+}
+
+.purple-ball {
+    background-color: #E59BF8;
+}
+
+
+/* red #FA6C60
+blue #4E85E7
+purple #E59BF8
+yellow #F9E602
+green #7AEA66 */
+
+
+/* .column-1 {
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.column-2 {
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%); */
 }

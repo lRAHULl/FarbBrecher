@@ -1,7 +1,8 @@
 let canvas=document.getElementById("canvas");
 function startTimer() {
-    let duration=1*10;
-    let display=document.getElementById("timer");
+    let noOfMinutes = 1;
+    let duration = noOfMinutes * 60;
+    let display = document.getElementById("timer");
     let timer = duration, minutes, seconds;
     let time=setInterval(function () {
         console.log(timer);
@@ -22,3 +23,11 @@ function startTimer() {
 window.onload = function () {
     startTimer();
 };
+
+let noOfBalls = 49;
+let differentBallTypes = ["red-ball", "blue-ball", "green-ball", "yellow-ball", "purple-ball"];
+for (let divGenerator = 0; divGenerator < noOfBalls; divGenerator++) {
+    let div = document.createElement("div");
+    div.className = "ball "  + differentBallTypes[Math.floor(Math.random() * 5)];
+    canvas.appendChild(div); 
+}
