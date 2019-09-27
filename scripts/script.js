@@ -45,6 +45,12 @@ function checkBallAlgorithm() {
         colorMatrix.push(colorRow);
     }
 
+    for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 7; j++) {
+            console.log(colorMatrix[i][j].id === this.id);
+        }
+    }
+
 
     console.log(colorMatrix);
     currentId.style.backgroundColor = "#383838";
