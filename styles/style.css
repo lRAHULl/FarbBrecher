@@ -1,12 +1,14 @@
 * {
     font-family: 'Indie Flower', cursive;
-    color: #383838;
+    color: lightgray;
 }
 
 body {
-    background-image: url(img.jpg);
+    height: 100vh;
+    background-image: url(img/img5.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     /* position: relative; */
 }
 
@@ -18,9 +20,45 @@ body {
 } */
 
 .top-icons {
-    color: #383838;
+    /* color: #383838; */
+    color: lightgray;
     position: absolute;
     top: 5%;
+}
+
+
+.ball {
+    /* border-radius: 50%; */
+    /* box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1); */
+    margin: 0 .6%;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+}
+
+.ball:hover {
+    transform: scale(1.05);
+    transition-duration: 0.1s;
+}
+
+.red-ball {
+    background: url(img/red-candy.png)
+}
+
+.blue-ball {
+    background: url(img/blue-candy.png);
+}
+
+.green-ball {
+    background: url(img/green-candy.png);
+}
+
+.yellow-ball {
+    background: url(img/yellow-candy.png);
+}
+
+.purple-ball {
+    background: url(img/purple-candy.png);
 }
 
 #play {
@@ -113,39 +151,6 @@ body {
     content: '';
 }
 
-.ball {
-    border-radius: 50%;
-    box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1);
-    margin: 0 .6%;
-    height: 60px;
-    width: 60px;
-    display: inline-block;
-}
-
-.ball:hover {
-    transform: scale(1.05);
-    transition-duration: 0.1s;
-}
-
-.red-ball {
-    background-color: #FA6C60;
-}
-
-.blue-ball {
-    background-color: #4E85E7;
-}
-
-.green-ball {
-    background-color: #7AEA66;
-}
-
-.yellow-ball {
-    background-color: #F9E602;
-}
-
-.purple-ball {
-    background-color: #E59BF8;
-}
 
 
 /* red #FA6C60
