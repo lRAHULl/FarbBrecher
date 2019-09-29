@@ -31,6 +31,8 @@ const startTimer = () => {
     }, 1000);
 }
 
+let score = 0;
+
 function checkBallAlgorithm() {
     let currentId = document.getElementById(this.id);
     console.log(currentId);
@@ -53,7 +55,17 @@ function checkBallAlgorithm() {
 
 
     console.log(colorMatrix);
-    currentId.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+    let currentCandyClass = currentId.className;
+    colorMatrix.forEach(colorRow => {
+        colorRow.forEach(candy => {
+            if (candy.className === currentCandyClass) {
+                candy.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+                score += 1;
+            }
+        })
+    })
+    console.log(score);
+    // currentId.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
 }
 
 let noOfBalls = 49;
@@ -82,4 +94,4 @@ replay.addEventListener('click', generateCandies);
 
 
 let finalScore = document.getElementById("final-score");
-finalScore.innerText += "0";
+finalScore.innerText += '0';
