@@ -53,18 +53,33 @@ function checkBallAlgorithm() {
 
 
     console.log(colorMatrix);
-    currentId.style.backgroundColor = "#383838";
+    currentId.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
 }
 
 let noOfBalls = 49;
 let differentBallTypes = ["red-ball", "blue-ball", "green-ball", "yellow-ball", "purple-ball"];
-for (let divGenerator = 0; divGenerator < noOfBalls; divGenerator++) {
-    let div = document.createElement("div");
-    div.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
-    div.id = divGenerator + 1;
-    div.onclick = checkBallAlgorithm;
-    canvas.appendChild(div);
+
+window.onload = () => {
+    generateCandies();
 }
+
+
+
+const generateCandies = () => {
+    document.querySelectorAll('.ball').forEach(div => div.remove());
+
+    for (let divGenerator = 0; divGenerator < noOfBalls; divGenerator++) {
+        let div = document.createElement("div");
+        div.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+        div.id = divGenerator + 1;
+        div.onclick = checkBallAlgorithm;
+        canvas.appendChild(div);
+    }
+}
+
+let replay = document.getElementById('replay');
+replay.addEventListener('click', generateCandies);
+
 
 let finalScore = document.getElementById("final-score");
 finalScore.innerText += "0";
