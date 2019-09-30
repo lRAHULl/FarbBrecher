@@ -41,6 +41,18 @@ body {
     transition-duration: 0.1s;
 }
 
+.ball-fade {
+    transition: ball-fade 2s ease-in;
+}
+
+@keyframes ball-fade {
+    from {
+        transform: scale(1.1);
+    } to {
+        transform: scale(0);
+    }
+}
+
 .red-ball {
     background: url(img/red-candy.png)
 }
@@ -59,6 +71,11 @@ body {
 
 .purple-ball {
     background: url(img/purple-candy.png);
+}
+
+.flex-column {
+    display: inline-flex;
+    flex-direction: column-reverse;
 }
 
 #play {

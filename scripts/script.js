@@ -1,4 +1,5 @@
 let canvas = document.getElementById("canvas");
+canvas.style.backgroundImage
 // window.onload = function () {
 //     startTimer();
 // };
@@ -31,12 +32,16 @@ const startTimer = () => {
     }, 1000);
 }
 
-let score = 0;
+// let score = 0;
 
 function checkBallAlgorithm() {
     let currentId = this.id;
     let row = Math.floor(currentId / 7);
     let column = currentId % 7 - 1;
+    if (column < 0) {
+        column = 6;
+        row = row - 1;
+    }
     let currentSelectedCandy = document.getElementById(this.id);
     console.log(currentSelectedCandy);
 
@@ -75,62 +80,101 @@ function checkBallAlgorithm() {
         selectTheBalls(row, column, currentCandyClass, colorMatrix);
         }
     // }
-    console.log(score);
+    // console.log(score);
+
+    let score = 0;
 
     function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
         if (column < 0 || row < 0 || column > 6 || row > 6) {
             return;
         }
-        colorMatrix[row][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+        let flag = 0;
         if (column < 6) {
             if (colorMatrix[row][column+1].className === currentCandyClass) {
+                console.log('here');
+                score++;
+                flag = 1;
+                // colorMatrix[row-1][column+1].className = "ball-fade";
                 colorMatrix[row][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+                
                 selectTheBalls(row, column+1, currentCandyClass, colorMatrix);
             }
         }
         if (row < 6) {
             if (colorMatrix[row+1][column].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row+1][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column, currentCandyClass, colorMatrix);
             }
         }
         if (column > 0) {
             if (colorMatrix[row][column-1].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row, column-1, currentCandyClass, colorMatrix);
             }
         }
         if (row > 0) {
             if (colorMatrix[row-1][column].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row-1][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row-1, column, currentCandyClass, colorMatrix);
             }
         }
         if (row < 6 && column < 6) {
             if (colorMatrix[row+1][column+1].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row+1][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column+1, currentCandyClass, colorMatrix);
             }
         }
         if (row > 0 && column < 6) {
             if (colorMatrix[row-1][column+1].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row-1][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+                
                 selectTheBalls(row-1, column+1, currentCandyClass, colorMatrix);
             }
         }
         if (row < 6 && column > 0) {
             if (colorMatrix[row+1][column-1].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row+1][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column-1, currentCandyClass, colorMatrix);
             }
         }
         if (row > 0 && column > 0) {
             if (colorMatrix[row-1][column-1].className === currentCandyClass) {
+                console.log('here');
+                flag = 1;
+                score++;
                 colorMatrix[row-1][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row-1, column-1, currentCandyClass, colorMatrix);
             }
         }
+        if (flag === 1) {
+            score++;
+            colorMatrix[row][column].className =  "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
+        } else {
+            // score -= 10;
+        }
+        console.log(score);
+        let finalScore = document.getElementById("final-score");
+        finalScore.innerText = "Score: " + score;
     }
+    
     // currentSelectedCandy.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
 // }
 
@@ -173,7 +217,3 @@ let calculateScope = () => {
 
 let replay = document.getElementById('replay');
 replay.addEventListener('click', generateCandies);
-
-
-let finalScore = document.getElementById("final-score");
-finalScore.innerText += '0';
