@@ -118,7 +118,7 @@ const generateCandiesRandom = () => {
 
 
 let replay = document.getElementById('replay');
-replay.addEventListener('click', generateCandies);
+replay.addEventListener('click', generateCandiesRandom);
 
 
 let finalScore = document.getElementById("final-score");
