@@ -123,6 +123,10 @@ body {
     transform: rotate(35deg);
 }
 
+.flex-column{
+    display: inline-flex;
+    flex-direction: column-reverse;
+}
 #shower:before {
     border-bottom: 80px solid red;
     border-left: 30px solid transparent;
@@ -135,6 +139,9 @@ body {
     display: block;
     content: '';
     transform: rotate(-35deg);
+}
+.display-none{
+    display: none;
 }
 
 #shower:after {
