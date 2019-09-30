@@ -1,5 +1,6 @@
 let canvas = document.getElementById("canvas");
-canvas.style.backgroundImage
+let body = document.querySelector('body');
+// canvas.style.backgroundImage
 // window.onload = function () {
 //     startTimer();
 // };
@@ -78,6 +79,8 @@ function checkBallAlgorithm() {
         console.log(row, column);
         console.log(colorMatrix[row][column]);
         selectTheBalls(row, column, currentCandyClass, colorMatrix);
+
+        document.getElementsByClassName('ball').style = "transition-duration: 0";
         }
     // }
     // console.log(score);
@@ -94,7 +97,8 @@ function checkBallAlgorithm() {
                 console.log('here');
                 score++;
                 flag = 1;
-                // colorMatrix[row-1][column+1].className = "ball-fade";
+                // colorMatrix[row][column+1].className = "ball ball-fade";
+                colorMatrix[row][column+1].style = "transition-duration: 0.7s";
                 colorMatrix[row][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 
                 selectTheBalls(row, column+1, currentCandyClass, colorMatrix);
@@ -105,6 +109,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row+1][column].style = "transition-duration: 0.7s";
                 colorMatrix[row+1][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column, currentCandyClass, colorMatrix);
             }
@@ -114,6 +119,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row][column-1].style = "transition-duration: 0.7s";
                 colorMatrix[row][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row, column-1, currentCandyClass, colorMatrix);
             }
@@ -123,6 +129,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row-1][column].style = "transition-duration: 0.7s";
                 colorMatrix[row-1][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row-1, column, currentCandyClass, colorMatrix);
             }
@@ -132,6 +139,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row+1][column+1].style = "transition-duration: 0.7s";
                 colorMatrix[row+1][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column+1, currentCandyClass, colorMatrix);
             }
@@ -141,6 +149,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row-1][column+1].style = "transition-duration: 0.7s";
                 colorMatrix[row-1][column+1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 
                 selectTheBalls(row-1, column+1, currentCandyClass, colorMatrix);
@@ -151,6 +160,7 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row+1][column-1].style = "transition-duration: 0.7s";
                 colorMatrix[row+1][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row+1, column-1, currentCandyClass, colorMatrix);
             }
@@ -160,19 +170,22 @@ function checkBallAlgorithm() {
                 console.log('here');
                 flag = 1;
                 score++;
+                colorMatrix[row-1][column-1].style = "transition-duration: 0.7s";
                 colorMatrix[row-1][column-1].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
                 selectTheBalls(row-1, column-1, currentCandyClass, colorMatrix);
             }
         }
         if (flag === 1) {
             score++;
+            colorMatrix[row][column].style = "transition-duration: 0.7s";
             colorMatrix[row][column].className =  "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
         } else {
             // score -= 10;
         }
         console.log(score);
-        let finalScore = document.getElementById("final-score");
-        finalScore.innerText = "Score: " + score;
+        let finalScore = document.getElementsByClassName("current-score")[0];
+        finalScore.style = "opacity: 1"
+        finalScore.innerText = "Score: " + (Math.floor(score/2));
     }
     
     // currentSelectedCandy.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];

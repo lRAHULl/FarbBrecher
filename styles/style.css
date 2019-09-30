@@ -38,18 +38,24 @@ body {
 
 .ball:hover {
     transform: scale(1.08);
-    transition-duration: 0.1s;
+    /* transition-duration: 0.1s; */
 }
 
 .ball-fade {
-    transition: ball-fade 2s ease-in;
+    animation: ball-fade 2s steps(5);
+}
+
+.current-score {
+    position: absolute;
+    top: 5px;
+    left: 45%;
 }
 
 @keyframes ball-fade {
     from {
         transform: scale(1.1);
     } to {
-        transform: scale(0);
+        transform: scale(5);
     }
 }
 
