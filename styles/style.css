@@ -1,6 +1,6 @@
 * {
     font-family: 'Indie Flower', cursive;
-    color: lightgray;
+    /* color: #000; */
 }
 
 body {
@@ -9,9 +9,11 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    color: lightgray;
     /* position: relative; */
 }
 #tutorial{
+    color: lightgray;
     position: absolute;
     top: 250px;
     right:220px;
@@ -42,7 +44,18 @@ body {
     top: 5%;
 }
 
-
+#immediateScore{
+    position: absolute;
+    top: 30%;
+    right:20%;
+}
+#immediateScore>div{
+    color: goldenrod;
+    font-family: 'Permanent Marker', cursive;
+    font: 800;
+    font-size: 2rem;
+    transform: rotate(15deg);
+}
 .ball {
     /* border-radius: 50%; */
     /* box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1); */
@@ -132,7 +145,7 @@ body {
     height: 480px;
     width: 460px;
     padding: 10px;
-    top: 80px;
+    top: 12.5%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #383838;
@@ -148,7 +161,9 @@ body {
     height: 480px;
     width: 460px;
     padding: 10px;
-    top: 100px;
+    /* top: 100px;
+     */
+    top: 12.5%;
     left: 50%;
     transform: translateX(-50%);
     /* background-color: aliceblue; */
@@ -208,6 +223,7 @@ body {
     top: 60px;
     left: 20px;
     padding:5%;
+    
 }
 .side-top{
     display:flex;
@@ -218,11 +234,15 @@ body {
 .side-column{
     display: flex;
     justify-content: space-evenly;
+    
 }
 .odd{
     background-color: #f8f8f8;
+    color:black;
+    
 }
 .even{
+    color:black;
     background-color: #fff;
 }
 .side-column>div{
