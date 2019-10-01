@@ -1,0 +1,243 @@
+* {
+    font-family: 'Indie Flower', cursive;
+    color: lightgray;
+}
+
+body {
+    height: 100vh;
+    background-image: url(img/img5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: relative; */
+}
+#tutorial{
+    position: absolute;
+    top: 250px;
+    right:220px;
+    height: 200px;
+    width:200px;
+}
+#tutorial > h2{
+    position: relative;
+    left: 75px;
+}
+#logo{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* #action {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    left: 50px;
+} */
+
+.top-icons {
+    /* color: #383838; */
+    color: lightgray;
+    position: absolute;
+    top: 5%;
+}
+
+
+.ball {
+    /* border-radius: 50%; */
+    /* box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1); */
+    margin: 0 .6%;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    animation: push 0.7s;
+    filter: drop-shadow(5px 10px 5px #222);
+    cursor: pointer;
+}
+
+.ball:hover {
+    transform: scale(1.08);
+    /* transition-duration: 0.1s; */
+}
+
+.ball-fade {
+    animation: ball-fade 2s steps(5);
+}
+
+.current-score {
+    position: absolute;
+    top: 5px;
+    left: 47%;
+}
+
+@keyframes ball-fade {
+    from {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(5);
+    }
+}
+
+.red-ball {
+    background: url(img/red-candy.png)
+}
+
+.blue-ball {
+    background: url(img/blue-candy.png);
+}
+
+.green-ball {
+    background: url(img/green-candy.png);
+}
+
+.yellow-ball {
+    background: url(img/yellow-candy.png);
+}
+
+.purple-ball {
+    background: url(img/purple-candy.png);
+}
+
+.flex-column {
+    display: inline-flex;
+    flex-direction: column-reverse;
+}
+
+#play {
+    left: 5%;
+    cursor: pointer;
+}
+
+#pause {
+    left: 5%;
+    display: none;
+    cursor:pointer;
+}
+
+#replay {
+    left: 10%;
+    cursor: pointer;
+}
+
+#timer {
+    position: absolute;
+    right: 10%;
+    top: 5%;
+}
+
+#game-over {
+    position: relative;
+    height: 480px;
+    width: 460px;
+    padding: 10px;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #383838;
+    box-shadow: 3px 6px 3px 6px rgba(92, 87, 87, 0.733);
+    /* z-index: -1; */
+    display: none;
+    font-size: 2rem;
+}
+
+#canvas {
+    position: relative;
+    background-color: rgba(56, 56, 56, 0.1);
+    height: 480px;
+    width: 460px;
+    padding: 10px;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: aliceblue; */
+}
+
+#currentScore {
+    background-color: antiquewhite;
+}
+
+#shower {
+    margin: 50px 0;
+    position: relative;
+    display: block;
+    color: red;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(35deg);
+}
+
+#shower:before {
+    border-bottom: 80px solid red;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -45px;
+    left: -65px;
+    display: block;
+    content: '';
+    transform: rotate(-35deg);
+}
+
+#shower:after {
+    position: absolute;
+    display: block;
+    top: 3px;
+    left: -105px;
+    width: 0px;
+    height: 0px;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    border-left: 100px solid transparent;
+    transform: rotate(-70deg);
+    content: '';
+}
+.gold{
+    color: gold;
+    transform: rotate(-15deg);
+}
+.side{
+    display:inline-block;
+    position:absolute;
+    top: 60px;
+    left: 20px;
+    padding:5%;
+}
+.side-top{
+    display:flex;
+    justify-content:space-evenly;
+    background-color: #000;
+    border-radius: 8%;
+}
+.side-column{
+    display: flex;
+    justify-content: space-evenly;
+}
+.odd{
+    background-color: #f8f8f8;
+}
+.even{
+    background-color: #fff;
+}
+.side-column>div{
+    padding: 5%;
+}
+.side-top>div{
+    padding: 5%;
+}
+
+
+  @keyframes push{
+    0%{
+      transform: scale(0);
+    }
+    100%{
+      transform: scale(1); 
+    }
+  }
