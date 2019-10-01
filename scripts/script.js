@@ -1,6 +1,8 @@
 let canvas = document.getElementById("canvas");
 let gameOver = document.getElementById("game-over");
 let body = document.querySelector("body");
+let popsound = new Audio();
+popsound.src = "./resources/music/pop.mp3";
 // canvas.style.backgroundImage
 // window.onload = function () {
 //     startTimer();
@@ -16,7 +18,7 @@ let user;
 // }
 window.onload = () => {
   generateCandies();
-//   user = prompt("Enter your name");
+  //   user = prompt("Enter your name");
   createScoreCard();
 };
 
@@ -44,10 +46,15 @@ const startTimer = noOfMinutes => {
     display.innerText = minutes + " : " + seconds;
 
     if (--timer === -1) {
+      let getDisplayBlock = document.querySelector("#immediateScore");
+      if (getDisplayBlock != null) {
+        getDisplayBlock.remove();
+      }
       document.getElementById("message").innerText = "Game Over";
       document.getElementById("final-score").innerText =
         "Final Score: " + Math.floor(score / 2);
       localStorage.setItem(user, Math.floor(score / 2));
+
       canvas.style.display = "none";
       gameOver.style.display = "block";
       window.clearTimeout(time);
@@ -69,6 +76,10 @@ const pauseTimer = () => {
 // let score = 0;
 
 function checkBallAlgorithm() {
+  document.getElementById("tutorial").style.display = "none";
+  let previousScore = score;
+  let differenceInScore = 0;
+
   let currentId = this.id;
   let row = Math.floor(currentId / 7);
   let column = (currentId % 7) - 1;
@@ -110,7 +121,11 @@ function checkBallAlgorithm() {
   //     for (let j = 0; j < colorMatrix[i].length; j++) {
   console.log(row, column);
   console.log(colorMatrix[row][column]);
-  selectTheBalls(row, column, currentCandyClass, colorMatrix);
+  let playFlag = document.getElementById("play").style.display;
+  if (playFlag === "none")
+    selectTheBalls(row, column, currentCandyClass, colorMatrix);
+  differenceInScore = Math.floor(score / 2) - Math.floor(previousScore / 2);
+  displayCombo(differenceInScore);
 
   document.getElementsByClassName("ball").style = "transition-duration: 0";
 }
@@ -126,6 +141,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   let flag = 0;
   if (column < 6) {
     if (colorMatrix[row][column + 1].className === currentCandyClass) {
+      popsound.play();
       score++;
       flag = 1;
       // colorMatrix[row][column+1].className = "ball ball-fade";
@@ -139,6 +155,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (row < 6) {
     if (colorMatrix[row + 1][column].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row + 1][column].style = "transition-duration: 0.7s";
       colorMatrix[row + 1][column].className =
@@ -149,6 +166,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (column > 0) {
     if (colorMatrix[row][column - 1].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row][column - 1].style = "transition-duration: 0.7s";
       colorMatrix[row][column - 1].className =
@@ -159,6 +177,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (row > 0) {
     if (colorMatrix[row - 1][column].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row - 1][column].style = "transition-duration: 0.7s";
       colorMatrix[row - 1][column].className =
@@ -169,6 +188,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (row < 6 && column < 6) {
     if (colorMatrix[row + 1][column + 1].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row + 1][column + 1].style = "transition-duration: 0.7s";
       colorMatrix[row + 1][column + 1].className =
@@ -179,6 +199,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (row > 0 && column < 6) {
     if (colorMatrix[row - 1][column + 1].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row - 1][column + 1].style = "transition-duration: 0.7s";
       colorMatrix[row - 1][column + 1].className =
@@ -190,6 +211,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   if (row < 6 && column > 0) {
     if (colorMatrix[row + 1][column - 1].className === currentCandyClass) {
       flag = 1;
+      popsound.play();
       score++;
       colorMatrix[row + 1][column - 1].style = "transition-duration: 0.7s";
       colorMatrix[row + 1][column - 1].className =
@@ -201,6 +223,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
     if (colorMatrix[row - 1][column - 1].className === currentCandyClass) {
       flag = 1;
       score++;
+      popsound.play();
       colorMatrix[row - 1][column - 1].style = "transition-duration: 0.7s";
       colorMatrix[row - 1][column - 1].className =
         "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
@@ -209,6 +232,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
   }
   if (flag === 1) {
     score++;
+    popsound.play();
     colorMatrix[row][column].style = "transition-duration: 0.7s";
     colorMatrix[row][column].className =
       "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
@@ -253,6 +277,33 @@ let differentBallTypes = [
   "purple-ball"
 ];
 
+const displayCombo = score => {
+  let body = document.querySelector("body");
+  let getDisplayBlock = document.querySelector("#immediateScore");
+  console.log(getDisplayBlock);
+  if (getDisplayBlock != null) {
+    getDisplayBlock.remove();
+  }
+  let displayDiv = document.createElement("div");
+  displayDiv.id = "immediateScore";
+  let subDiv1 = document.createElement("div");
+  let subDiv2 = document.createElement("div");
+  if (score > 1) {
+    subDiv1.innerText = "Combo";
+    subDiv2.innerText = score;
+  } else {
+    subDiv1.innerText = "Penalty";
+    subDiv1.style.color = "red";
+    let icon = document.createElement("i");
+    icon.className = "fas fa-skull fa-lg";
+    icon.style.padding = "10%";
+    icon.style.color = "white";
+    subDiv2.appendChild(icon);
+  }
+  displayDiv.appendChild(subDiv1);
+  displayDiv.appendChild(subDiv2);
+  body.appendChild(displayDiv);
+};
 const generateCandies = () => {
   document.querySelectorAll(".ball").forEach(div => div.remove());
 
@@ -267,6 +318,10 @@ const generateCandies = () => {
 
 let play = document.getElementById("play");
 play.addEventListener("click", () => {
+  let getDisplayBlock = document.querySelector("#immediateScore");
+  if (getDisplayBlock != null) {
+    getDisplayBlock.remove();
+  }
   play.style.display = "none";
   pause.style.display = "block";
   canvas.style.display = "block";
@@ -285,6 +340,10 @@ play.addEventListener("click", () => {
 
 let pause = document.getElementById("pause");
 pause.addEventListener("click", () => {
+  let getDisplayBlock = document.querySelector("#immediateScore");
+  if (getDisplayBlock != null) {
+    getDisplayBlock.remove();
+  }
   pause.style.display = "none";
   play.style.display = "block";
   canvas.style.display = "none";
@@ -300,6 +359,10 @@ let calculateScope = () => {};
 
 let replay = document.getElementById("replay");
 replay.addEventListener("click", () => {
+  let getDisplayBlock = document.querySelector("#immediateScore");
+  if (getDisplayBlock != null) {
+    getDisplayBlock.remove();
+  }
   generateCandies();
   window.clearTimeout(time);
   play.style.display = "none";
@@ -321,7 +384,11 @@ const createScoreCard = () => {
   }
   // let uArr = [];
 
-  let userArr = [{name: 'Senapathi', value: 763}, {name: 'Vishnu', value: 461}, {name: 'Vishali', value: 432}, {name: 'Karthick', value: 450}]
+  let userArr = [
+    { name: "Senapathi", value: 861 },
+    { name: "Vishnu", value: 762 },
+    { name: "Vishali", value: 653 }
+  ];
   for (var count = 0; count < userArr.length; count++) {
     var key = userArr[count].name;
     console.log(key);
@@ -340,12 +407,12 @@ const createScoreCard = () => {
     } else {
       div.className = "side-column odd";
     }
-    
+
     if (count == 0) {
       innerDiv1.appendChild(icon);
     } else {
-        innerDiv1.innerText = count;
-      }
+      innerDiv1.innerText = count + 1;
+    }
     div.appendChild(innerDiv1);
     innerDiv2.innerText = key;
     div.appendChild(innerDiv2);
