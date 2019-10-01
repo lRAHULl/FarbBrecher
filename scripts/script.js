@@ -32,6 +32,7 @@ const startTimer = () => {
         display.innerText = minutes + " : " + seconds;
 
         if (--timer === -1) {
+            document.getElementById('final-score').innerText += (Math.floor(score / 2));
             canvas.style.display = "none";
             gameOver.style.display = "block";
             window.clearTimeout(time);
@@ -183,7 +184,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
         score++;
         colorMatrix[row][column].style = "transition-duration: 0.7s";
         colorMatrix[row][column].className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
-        return 1;
+        // return 1;
     } else {
         console.log('here');
         // return 0;
@@ -193,6 +194,7 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
     let currentScore = document.getElementsByClassName("current-score")[0];
     currentScore.style = "opacity: 1;transition-duration: 0.5s";
     currentScore.innerText = "Score: " + (Math.floor(score / 2));
+
 }
 
 // currentSelectedCandy.className = "ball " + differentBallTypes[Math.floor(Math.random() * 5)];
