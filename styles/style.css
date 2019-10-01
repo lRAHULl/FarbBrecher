@@ -11,6 +11,22 @@ body {
     background-size: cover;
     /* position: relative; */
 }
+#tutorial{
+    position: absolute;
+    top: 250px;
+    right:220px;
+    height: 200px;
+    width:200px;
+}
+#tutorial > h2{
+    position: relative;
+    left: 75px;
+}
+#logo{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
 
 /* #action {
     position: absolute;
@@ -34,8 +50,9 @@ body {
     height: 60px;
     width: 60px;
     display: inline-block;
-    
+    animation: push 0.7s;
     filter: drop-shadow(5px 10px 5px #222);
+    cursor: pointer;
 }
 
 .ball:hover {
@@ -90,15 +107,18 @@ body {
 
 #play {
     left: 5%;
+    cursor: pointer;
 }
 
 #pause {
     left: 5%;
     display: none;
+    cursor:pointer;
 }
 
 #replay {
     left: 10%;
+    cursor: pointer;
 }
 
 #timer {
@@ -178,25 +198,46 @@ body {
     transform: rotate(-70deg);
     content: '';
 }
-
-
-
-/* red #FA6C60
-blue #4E85E7
-purple #E59BF8
-yellow #F9E602
-green #7AEA66 */
-
-
-/* .column-1 {
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
+.gold{
+    color: gold;
+    transform: rotate(-15deg);
+}
+.side{
+    display:inline-block;
+    position:absolute;
+    top: 60px;
+    left: 20px;
+    padding:5%;
+}
+.side-top{
+    display:flex;
+    justify-content:space-evenly;
+    background-color: #000;
+    border-radius: 8%;
+}
+.side-column{
+    display: flex;
+    justify-content: space-evenly;
+}
+.odd{
+    background-color: #f8f8f8;
+}
+.even{
+    background-color: #fff;
+}
+.side-column>div{
+    padding: 5%;
+}
+.side-top>div{
+    padding: 5%;
 }
 
-.column-2 {
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, -50%); 
-    
-}*/
+
+  @keyframes push{
+    0%{
+      transform: scale(0);
+    }
+    100%{
+      transform: scale(1); 
+    }
+  }
