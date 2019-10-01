@@ -200,6 +200,11 @@ function selectTheBalls(row, column, currentCandyClass, colorMatrix) {
     console.log(score);
     let currentScore = document.getElementsByClassName("current-score")[0];
     currentScore.style = "opacity: 1;transition-duration: 0.5s";
+    let timer = document.getElementById('timer').innerText;
+    if (timer === '' || timer === ' '){
+        score = 0;
+    }
+
     currentScore.innerText = "Score: " + (Math.floor(score / 2));
 
 }
