@@ -7,16 +7,17 @@ let body = document.querySelector('body');
 // };
 
 // let play = document.getElementById("play");
-
-// play.addEventListener("click", startTimer);
+// play.addEventListener("click", () => {
+//     startTimer(1);
+// });
 
 let time = null;
-const startTimer = () => {
+const startTimer = (noOfMinutes) => {
     if (time != null) {
         window.clearTimeout(time);
         time = null;
     }
-    let noOfMinutes = 1;
+    // let noOfMinutes = 1;
     let duration = noOfMinutes * 60;
     let display = document.getElementById("timer");
     let timer = duration,
@@ -32,11 +33,17 @@ const startTimer = () => {
         display.innerText = minutes + " : " + seconds;
 
         if (--timer === -1) {
-            document.getElementById('final-score').innerText += (Math.floor(score / 2));
+            document.getElementById('message').innerText = "Game Over"
+            document.getElementById('final-score').innerText = 'Final Score: ' + (Math.floor(score / 2));
             canvas.style.display = "none";
             gameOver.style.display = "block";
             window.clearTimeout(time);
             time = null;
+        }
+        if (timer < 5) {
+            display.style.color = 'red';
+        } else {
+            display.style.color = 'lightgray';
         }
     }, 1000);
 }
@@ -233,15 +240,33 @@ const generateCandies = () => {
 }
 
 let play = document.getElementById('play');
-let pause = document.getElementById('pause');
 play.addEventListener('click', () => {
     play.style.display = 'none';
     pause.style.display = 'block';
+    canvas.style.display = "block";
+    gameOver.style.display = "none";
+    let timer = document.getElementById('timer').innerText;
+    if (timer === '01 : 00' || timer === '' || timer === ' ') {
+        console.log('play');
+        startTimer(1);
+    } else {
+        let minutes = timer.split(':')[1];
+        console.log(minutes);
+        console.log((minutes - 1)/60);
+        startTimer((minutes - 1)/60);
+    }
 })
 
+let pause = document.getElementById('pause');
 pause.addEventListener('click', () => {
     pause.style.display = 'none';
     play.style.display = 'block';
+    canvas.style.display = "none";
+    gameOver.style.display = "block";
+    let message = document.getElementById('message');
+    message.innerText = 'Paused'
+    let pausedScore = document.getElementById('final-score');
+    pausedScore.innerText = 'Score: ' + Math.floor(score / 2);
     pauseTimer();
 })
 
@@ -254,11 +279,13 @@ let replay = document.getElementById('replay');
 replay.addEventListener('click', () => {
     generateCandies();
     window.clearTimeout(time);
+    play.style.display = 'none';
+    pause.style.display = 'block';
     canvas.style.display = "block";
     gameOver.style.display = "none";
     score = 0;
     let currentScore = document.getElementsByClassName("current-score")[0];
     currentScore.style = "opacity: 0";
     // currentScore.innerText = "Score: 0";
-    startTimer();
+    startTimer(1);
 });
