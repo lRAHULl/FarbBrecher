@@ -3,6 +3,8 @@ let gameOver = document.getElementById("game-over");
 let body = document.querySelector("body");
 let popsound = new Audio();
 popsound.src = "./resources/music/pop.mp3";
+bsound=new Audio();
+bsound.src= "./107.mp3";
 // canvas.style.backgroundImage
 // window.onload = function () {
 //     startTimer();
@@ -318,6 +320,7 @@ const generateCandies = () => {
 
 let play = document.getElementById("play");
 play.addEventListener("click", () => {
+    bsound.play();
   let getDisplayBlock = document.querySelector("#immediateScore");
   if (getDisplayBlock != null) {
     getDisplayBlock.remove();
