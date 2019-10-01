@@ -52,6 +52,10 @@ const startTimer = noOfMinutes => {
       if (getDisplayBlock != null) {
         getDisplayBlock.remove();
       }
+      document.querySelector('body').className = "preview-covers";
+      setInterval(() => {
+        document.querySelector('body').className = "";
+      }, 2500)
       document.getElementById("message").innerText = "Game Over";
       document.getElementById("final-score").innerText =
         "Final Score: " + Math.floor(score / 2);
