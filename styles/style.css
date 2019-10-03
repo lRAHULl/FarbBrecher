@@ -12,19 +12,22 @@ body {
     color: lightgray;
     /* position: relative; */
 }
-#tutorial{
+
+#tutorial {
     color: lightgray;
     position: absolute;
     top: 250px;
-    right:220px;
+    right: 220px;
     height: 200px;
-    width:200px;
+    width: 200px;
 }
-#tutorial > h2{
+
+#tutorial>h2 {
     position: relative;
     left: 75px;
 }
-#logo{
+
+#logo {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -44,18 +47,20 @@ body {
     top: 5%;
 }
 
-#immediateScore{
+#immediateScore {
     position: absolute;
     top: 40%;
-    right:20%;
+    right: 20%;
 }
-#immediateScore>div{
+
+#immediateScore>div {
     color: goldenrod;
     font-family: 'Permanent Marker', cursive;
     font: 800;
     font-size: 2rem;
     transform: rotate(15deg);
 }
+
 .ball {
     /* border-radius: 50%; */
     /* box-shadow: 1px 2px 1px 2px rgba(34, 31, 31, 1); */
@@ -126,7 +131,7 @@ body {
 #pause {
     left: 5%;
     display: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #replay {
@@ -213,51 +218,60 @@ body {
     transform: rotate(-70deg);
     content: '';
 }
-.gold{
+
+.gold {
     color: gold;
     transform: rotate(-15deg);
 }
-.side{
-    display:inline-block;
-    position:absolute;
+
+.side {
+    display: inline-block;
+    position: absolute;
     top: 60px;
     left: 20px;
-    padding:5%;
-    
+    padding: 5%;
+
 }
-.side-top{
-    display:flex;
-    justify-content:space-evenly;
+
+.side-top {
+    display: flex;
+    justify-content: space-evenly;
     background-color: #000;
     border-radius: 8%;
 }
-.side-column{
+
+.side-column {
     display: flex;
     justify-content: space-evenly;
-    
+
 }
-.odd{
+
+.odd {
     background-color: #f8f8f8;
-    color:black;
-    
+    color: black;
+
 }
-.even{
-    color:black;
+
+.even {
+    color: black;
     background-color: #fff;
 }
-.side-column>div{
+
+.side-column>div {
     padding: 5%;
 }
-.side-top>div{
+
+.side-top>div {
     padding: 5%;
 }
 
 
-  @keyframes push{
-    0%{
-      transform: scale(0);
+@keyframes push {
+    0% {
+        transform: scale(0);
     }
-    100%{
-      transform: scale(1); 
+
+    100% {
+        transform: scale(1);
     }
-  }
+}

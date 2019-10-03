@@ -1,3 +1,3 @@
-window.onload = function() {
+window.onload = function () {
     document.getElementById("my_audio").play();
 }
